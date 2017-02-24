@@ -1,0 +1,31 @@
+group 'com.xiaohongchun.xcx'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+jar {
+    baseName = 'demo'
+    version = "$project.version"
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven{
+        url "http://maven.aliyun.com/nexus/content/groups/public"
+    }
+    mavenCentral()
+}
+
+dependencies {
+//    compile('org.springframework.boot:spring-boot-starter-jdbc:1.4.0.RELEASE')
+//    compile('mysql:mysql-connector-java:5.1.39')
+    compile('org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-websocket:1.4.0.RELEASE')
+//    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1'
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE')
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    compile("org.springframework.boot:spring-boot-devtools:1.4.0.RELEASE")
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
