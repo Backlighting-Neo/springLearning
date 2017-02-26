@@ -1,7 +1,11 @@
 package com.xiaohongchun.xcx.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.xiaohongchun.xcx.config.Config;
 import com.xiaohongchun.xcx.service.QcloudSign;
+import com.xiaohongchun.xcx.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +36,17 @@ public class TestController {
 
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", qCloudImageSign);
+
+        JSONObject body = new JSONObject();
+        JSONArray urlList = new JSONArray();
+
+        body.put("appid", "1252313296");
+        body.put("bucket", "xcximage");
+        body.put("card_type", 0);
+        urlList.add(0, "http://img-qcloud.xiaohongchun.com.cn/prd-goods-images/zhouxiaohong_idcard_1.jpg");
+        body.put("url_list", urlList);
+
+//        HttpUtils.post("http://service.image.myqcloud.com/ocr/idcard", headers, body.toJSONString(), );
 
 
 
